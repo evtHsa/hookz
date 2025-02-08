@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "post-merge hook: $*"
+echo "@@post-merge hook: $*"

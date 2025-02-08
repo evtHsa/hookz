@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "pre-push hook: $*"
+echo "@@pre-push hook: $*"

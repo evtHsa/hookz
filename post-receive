@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "update hook: $*"
+echo "@@update hook: $*"

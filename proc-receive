@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "proc-receive hook: $*"
+echo "@@proc-receive hook: $*"

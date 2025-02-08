@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "push-to-checkout hook: $*"
+echo "@@push-to-checkout hook: $*"

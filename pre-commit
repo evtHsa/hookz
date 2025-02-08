@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "pre-commit hook: $*"
+echo "@@pre-commit hook: $*"

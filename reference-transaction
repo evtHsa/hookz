@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "reference-transaction hook: $*"
+echo "@@reference-transaction hook: $*"

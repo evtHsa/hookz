@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "pre-receive hook: $*"
+echo "@@pre-receive hook: $*"

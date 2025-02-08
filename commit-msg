@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "commit-msg hook: $*"
+echo "@@commit-msg hook: $*"
