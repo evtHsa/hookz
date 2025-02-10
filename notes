@@ -1,20 +1,20 @@
 ; -*- mode: outline -*-
 * _done_
-** rebase scenarios
-*** ==== done - all are rebase scenarios ====
-**** git rebase -i <invalid#>: never even get to hooks
-****  nuke rebase file so nothing should happen
-***** log
+* rebase scenarios
+** ==== done - all are rebase scenarios ====
+*** git rebase -i <invalid#>: never even get to hooks
+*** nuke rebase file so nothing should happen
+**** log
 @@pre-rebase hook: HEAD~6
 Successfully rebased and updated refs/heads/test.
-***** notes
+**** notes
    - we probably have to nuke any state setup on entry to this hook
    - we may need to convert HEAD~6 to a SHA id
-***** hooks used   
+**** hooks used   
 @@pre-rebase hook
-****  dont modify rebase file so also nothing should happen
-****  reword, change subj line
-***** log
+*** dont modify rebase file so also nothing should happen
+** reword, change subj line
+*** log
 git rebase -i HEAD~6
 @@pre-rebase hook: HEAD~6
 @@pre-commit hook: 
@@ -29,16 +29,16 @@ hint: Waiting for your editor to close the file...
 @@post-rewrite hook: rebase
 Successfully rebased and updated refs/heads/test.
  (test): trash $
- ***** notes
- ***** hooks used
+ *** notes
+ *** hooks used
 @@commit-msg hook: .git/COMMIT_EDITMSG
 @@post-rewrite hook: amend
 @@post-rewrite hook: rebase
 @@pre-commit hook: 
 @@post-commit hook: 
 @@pre-rebase hook: HEAD~6
-****  reword, change non subj line
-***** log
+** reword, change non subj line
+*** log
  (test): trash $ git rebase -i HEAD~6
 @@pre-rebase hook: HEAD~6
 @@pre-commit hook: 
@@ -66,11 +66,11 @@ hint: Waiting for your editor to close the file...
  create mode 100644 curly
 @@post-rewrite hook: rebase
 Successfully rebased and updated refs/heads/test.
-***** notes
+*** notes
     - commit-msg hook means we have to check subject chg (if we lookup by subj)
-***** hooks used   
-**** eidt, reset HEAD^, make 2 commits out of one
-***** log
+*** hooks used   
+** edit 2, reset HEAD^, make 2 commits out of one
+*** log
 git rebase -i HEAD~6
 @@pre-rebase hook: HEAD~6
 Stopped at 575c7f6...  yet_more_trash
@@ -311,8 +311,8 @@ nothing to commit, working tree clean
 @@post-rewrite hook: rebase
 Successfully rebased and updated refs/heads/test.
  (test): trash $
- **** notes
-**** hooks used
+ ** notes
+*** hooks used
 @@pre-rebase hook: HEAD~6
 @@pre-commit hook: 
 @@commit-msg hook: .git/COMMIT_EDITMSG
@@ -322,8 +322,8 @@ Successfully rebased and updated refs/heads/test.
 @@commit-msg hook: .git/COMMIT_EDITMSG
 @@post-commit hook: 
 @@post-rewrite hook: rebase
-**** reorder 2 commits
-***** log
+** reorder 2 commits
+*** log
 git lg -7
  50f34e8      eric van tassell : leftovers from yet_more_trash
  1ed27d8      eric van tassell : yet_more_trash2
@@ -345,22 +345,22 @@ Successfully rebased and updated refs/heads/test.
  53aaf26      evantass@amd.com : more_trash, subject mofier:xxx
  f962789      Eric van Tassell : Initial commit
  (test): trash $
- ***** notes
-***** hooks used
+ *** notes
+*** hooks used
 @@pre-rebase hook: HEAD~6
 @@post-rewrite hook: rebase
-**** drop a commit
-***** log
+** drop a commit
+*** log
  (test): trash $ git rebase -i HEAD~6
 @@pre-rebase hook: HEAD~6
 @@post-rewrite hook: rebase
 Successfully rebased and updated refs/heads/test.
- ***** notes
-***** hooks used
+ *** notes
+*** hooks used
 @@pre-rebase hook: HEAD~6
 @@post-rewrite hook: rebase
-**** squash 2 commits to one, dont edit cmt msg
-***** log
+** squash 2 commits to one, dont edit cmt msg
+*** log
 git lg -9
  fd5381c      eric van tassell : leftovers from yet_more_trash
  9ec69b4      eric van tassell : boffo
@@ -381,15 +381,15 @@ hint: Waiting for your editor to close the file...
  create mode 100644 yet_more_trash
 @@post-rewrite hook: rebase
 Successfully rebased and updated refs/heads/test.
-***** notes
-***** hooks used
+*** notes
+*** hooks used
 @@post-rewrite hook: amend
 @@post-rewrite hook: rebase
 @@post-commit hook: 
 @@pre-rebase hook: HEAD~5
-**** squash 2 commits to one, edit cmt msg <same as dont edit cmt msg>
-**** create new commit(edit, add, commit)
-***** log
+** squash 2 commits to one, edit cmt msg <same as dont edit cmt msg>
+** create new commit(edit, add, commit)
+*** log
 @@pre-commit hook: 
 hint: Waiting for your editor to close the file...
 @@commit-msg hook: .git/COMMIT_EDITMSG
@@ -397,13 +397,13 @@ hint: Waiting for your editor to close the file...
 [test 69fff98] lalalalal
  1 file changed, 8 insertions(+)
  create mode 100644 boring
-***** notes
-***** hooks used
+*** notes
+*** hooks used
 @@commit-msg hook: .git/COMMIT_EDITMSG
 @@pre-commit hook: 
 @@post-commit hook:
-**** giit commit --amend
-***** log
+** giit commit --amend
+*** log
 echo 'editing boring'
 editing boring
  (test): trash $ git diff
@@ -441,13 +441,13 @@ and have 4 and 4 different commits each, respectively.
   (use "git pull" to merge the remote branch into yours)
 
 nothing to commit, working tree clean
-***** hooks used
+*** hooks used
 @@commit-msg hook: .git/COMMIT_EDITMSG
 @@post-rewrite hook: amend
 @@pre-commit hook: 
 @@post-commit hook: 
-*** git rebase, edit two,  --edit-todo
-**** log
+** git rebase, edit two,  --edit-todo
+*** log
  (test): trash $ git rebase -i HEAD~4
 @@pre-rebase hook: HEAD~4
 Successfully rebased and updated refs/heads/test.
@@ -576,15 +576,15 @@ hint: Waiting for your editor to close the file...
 @@post-rewrite hook: rebase
 Successfully rebased and updated refs/heads/test.
  (test): trash $ 
-**** hooks used
+*** hooks used
 @@commit-msg hook: .git/COMMIT_EDITMSG
 @@post-rewrite hook: amend
 @@post-rewrite hook: rebase
 @@pre-commit hook: 
 @@post-commit hook: 
 @@pre-rebase hook: HEAD~4
-*** push stuff
-**** log
+** push stuff
+*** log
 git push origin
 Username for 'https://github.com': evtHsa
 Password for 'https://evtHsa@github.com': 
@@ -663,8 +663,7 @@ remote: Resolving deltas: 100% (5/5), completed with 1 local object.
 To https://github.com/evtHsa/trash.git
    886a281..a5a9fd1  test -> test
  (test): trash $
- **** hooks used
-**** used hooks
+*** hooks used
 @@commit-msg hook: .git/COMMIT_EDITMSG
 @@pre-commit hook: 
 @@pre-push hook: origin https://github.com/evtHsa/trash.git
@@ -685,15 +684,27 @@ To https://github.com/evtHsa/trash.git
 ** py
 ** _done_
 ** group 1
+*** _done_
 *** @@pre-rebase hook
-** rest
+*** _done_
+*** ut: get sha from expr, see  backport tool
+*** no arg
+**** _done_
+**** base python script
+**** util script
+****
+****
+*** 1 arg:commit
+** group 2
+*** _done_
+*** @@pre-commit hook:
 *** @@commit-msg hook: .git/COMMIT_EDITMSG
 *** @@post-rewrite hook: amend
 *** @@post-rewrite hook: rebase
-*** @@pre-commit hook: 
+** rest
+*** _done_
 *** @@pre-push hook: origin https://github.com/evtHsa/trash.git
 *** @@post-commit hook:
-*** @@pre-rebase hook: HEAD~<number>
 ** get_sha_expr(): HEAD~5 to some sha
 * stuff to worry about
 ** _done_

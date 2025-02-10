@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "@@pre-rebase: $*"
+echo "@@post-commit-hook:  $*"
